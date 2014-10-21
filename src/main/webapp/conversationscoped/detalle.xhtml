@@ -7,13 +7,21 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/template.xhtml">
     <ui:define name="content">
-        <h:outputText value="Detalle"/>
+        <h1>
+            <h:outputText value="Afiliado seleccionado"/>
+        </h1>
 
         <br/>
 
-        <h:form >
-            <h:outputText value="#{conversationController.valor}"/>
+        <h:form>
 
+
+            <div class="row">
+                <h:outputText value="Numero de documento" styleClass="col-lg-2"/>
+                <h:outputText id="txtNumeroDocumento"
+                              value="#{conversationController.afiliado.numeroDocumento}"
+                              styleClass="col-lg-4"/>
+            </div>
 
             <div class="btn-group">
                 <p:commandButton value="Volver"

@@ -5,6 +5,7 @@ import com.conexia.webflows.entities.Afiliado;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Created by pbastidas on 21/10/14.
@@ -19,5 +20,11 @@ public class AfiliadoBoundary {
 
     public void crearAfiliado(Afiliado afiliado){
         em.persist(afiliado);
+    }
+
+    public List<Afiliado> buscar(String key){
+        return em.createNamedQuery("Afiliado.findByKey", Afiliado.class)
+                .setParameter("llave", "%"+key+"%")
+                .getResultList();
     }
 }

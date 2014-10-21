@@ -14,9 +14,44 @@
 
             <p:inputText value="#{conversationController.valor}"/>
 
-            <p:commandButton value="Siguiente"
+            <p:commandButton value="Buscar"
+                             action="#{conversationController.buscarAfiliados}"
                              styleClass="btn btn-default"
-                             action="/conversationscoped/detalle?faces-redirect=true"/>
+                             update="tblAfiliados"/>
+
+            <p:dataTable id="tblAfiliados"
+                         styleClass="table table-striped"
+                         value="#{conversationController.afiliados}"
+                         selection="#{conversationController.afiliado}"
+                         rowKey="#{afiliado.id}"
+                         var="afiliado">
+                <f:facet name="header">
+                    Afiliados
+                </f:facet>
+
+                <p:column selectionMode="single"/>
+                <p:ajax event="rowSelectRadio" update="@form"/>
+
+                <p:column headerText="Numero documento">
+                    #{afiliado.numeroDocumento}
+                </p:column>
+                <p:column headerText="Nombres">
+                    #{afiliado.primerNombre} #{afiliado.segundoNombre}
+                </p:column>
+                <p:column headerText="Apellidos">
+                    #{afiliado.primerApellido} #{afiliado.segundoApellido}
+                </p:column>
+
+            </p:dataTable>
+
+            <div class="btn-group">
+                <p:commandButton value="Volver"
+                                 styleClass="btn btn-default"
+                                 action="#{conversationController.end}"/>
+                <p:commandButton value="Siguiente"
+                                 styleClass="btn btn-default"
+                                 action="/conversationscoped/detalle?faces-redirect=true"/>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>
