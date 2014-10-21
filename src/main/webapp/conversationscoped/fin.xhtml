@@ -14,11 +14,14 @@
         <h:form>
             <h:outputText value="#{conversationController.valor}"/>
 
-
-            <p:commandButton value="Volver"
-                             action="/conversationscoped/detalle?faces-redirect=true"/>
-            <p:commandButton value="Finalizar"
-                             action="#{conversationController.end()}"/>
+            <div class="btn-group">
+                <p:commandButton styleClass="btn btn-default"
+                                 value="Volver"
+                                 action="/conversationscoped/detalle?faces-redirect=true"/>
+                <p:commandButton value="Finalizar"
+                                 styleClass="btn btn-default"
+                                 action="#{conversationController.end()}"/>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>

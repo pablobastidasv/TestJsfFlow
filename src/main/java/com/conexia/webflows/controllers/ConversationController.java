@@ -3,14 +3,12 @@ package com.conexia.webflows.controllers;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.annotation.PostConstruct;
+import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import javax.enterprise.context.Conversation;
 
 /**
  * Created by pbastidas on 21/10/14.

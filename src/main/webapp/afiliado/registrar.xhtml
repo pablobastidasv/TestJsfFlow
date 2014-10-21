@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/template.xhtml">
+    <ui:define name="content">
+        <h1>Registrar</h1>
+
+        <h:form>
+
+            <p:messages closable="true"/>
+
+            <div class="row">
+                <p:outputLabel for="txtNumeroDocumento"
+                               value="Numero de documento" styleClass="col-lg-2"/>
+                <p:inputText id="txtNumeroDocumento"
+                             required="true"
+                             value="#{registrarController.afiliado.numeroDocumento}"
+                             styleClass="input-sm col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtPrimerNombre"
+                               value="Primer nombre" styleClass="col-lg-2"/>
+                <p:inputText id="txtPrimerNombre"
+                             required="true"
+                             value="#{registrarController.afiliado.primerNombre}"
+                             styleClass="input-sm col-lg-4"/>
+                <p:outputLabel for="txtSegundoNombre"
+                               value="Segundo nombre" styleClass="col-lg-2"/>
+                <p:inputText id="txtSegundoNombre"
+                             value="#{registrarController.afiliado.segundoNombre}"
+                             styleClass="input-sm col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtPrimerApellido"
+                               value="Primer apellido" styleClass="col-lg-2"/>
+                <p:inputText id="txtPrimerApellido"
+                             required="true"
+                             value="#{registrarController.afiliado.primerApellido}"
+                             styleClass="input-sm col-lg-4"/>
+                <p:outputLabel for="txtSegundoApellido"
+                               value="Segundo apellido" styleClass="col-lg-2"/>
+                <p:inputText id="txtSegundoApellido"
+                             value="#{registrarController.afiliado.segundoApellido}"
+                             styleClass="input-sm col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="slcGenero"
+                               value="Genero" styleClass="col-lg-2"/>
+                <h:selectOneMenu id="slcGenero"
+                                 required="true"
+                                 value="#{registrarController.afiliado.genero}"
+                                 styleClass="input-sm col-lg-4">
+                    <f:selectItem itemValue=""
+                                  itemLabel="-- Seleccione el genero --"/>
+                    <f:selectItem itemValue="M"
+                                  itemLabel="Masculino"/>
+                    <f:selectItem itemValue="F"
+                                  itemLabel="Femenino"/>
+                </h:selectOneMenu>
+                <p:outputLabel for="txtPlan"
+                               value="Plan" styleClass="col-lg-2"/>
+                <p:inputText id="txtPlan"
+                             required="true"
+                             value="#{registrarController.afiliado.plan}"
+                             styleClass="input-sm col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtTelefono"
+                               value="Telefono" styleClass="col-lg-2"/>
+                <p:inputText id="txtTelefono"
+                             required="true"
+                             value="#{registrarController.afiliado.telefono}"
+                             styleClass="input-sm col-lg-4"/>
+                <p:outputLabel for="txtCelular"
+                               value="Celular" styleClass="col-lg-2"/>
+                <p:inputText id="txtCelular"
+                             required="true"
+                             value="#{registrarController.afiliado.celular}"
+                             styleClass="input-sm col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtEmail"
+                               value="Correo" styleClass="col-lg-2"/>
+                <p:inputText id="txtEmail"
+                             required="true"
+                             value="#{registrarController.afiliado.email}"
+                             type="email"
+                             styleClass="input-sm col-lg-10"/>
+            </div>
+
+            <div class="btn-group" >
+                <p:commandButton value="Guardar"
+                                 action="#{registrarController.guardar}"
+                                 styleClass="btn btn-success"
+                                 update="@form"/>
+                <p:commandButton value="Volver"
+                                 immediate="true"
+                                 action="/index?faces-redirect=true"
+                                 styleClass="btn btn-danger"
+                                 update="@form"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

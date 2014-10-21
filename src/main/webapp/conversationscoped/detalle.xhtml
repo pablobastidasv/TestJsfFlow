@@ -11,13 +11,18 @@
 
         <br/>
 
-        <h:form>
+        <h:form >
             <h:outputText value="#{conversationController.valor}"/>
-            <p:commandButton value="Volver"
-                             action="/conversationscoped/formulario?faces-redirect=true"/>
 
-            <p:commandButton value="Siguiente"
-                             action="/conversationscoped/fin?faces-redirect=true"/>
+
+            <div class="btn-group">
+                <p:commandButton value="Volver"
+                                 styleClass="btn btn-default"
+                                 action="/conversationscoped/formulario?faces-redirect=true"/>
+                <p:commandButton value="Siguiente"
+                                 styleClass="btn btn-default"
+                                 action="/conversationscoped/fin?faces-redirect=true"/>
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>
