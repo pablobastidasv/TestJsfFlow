@@ -7,12 +7,17 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/template.xhtml">
     <ui:define name="content">
+        <h:outputText value="Detalle"/>
+
+        <br/>
+
         <h:form>
-            <ul class="nav nav-stacked">
-                <li class="active"><a jsf:action="/conversationscoped/formulario?faces-redirect=true">Conversation Scoped</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-            </ul>
+            <h:outputText value="#{conversationController.valor}"/>
+            <p:commandButton value="Volver"
+                             action="/conversationscoped/formulario?faces-redirect=true"/>
+
+            <p:commandButton value="Siguiente"
+                             action="/conversationscoped/fin?faces-redirect=true"/>
         </h:form>
     </ui:define>
 </ui:composition>

@@ -7,12 +7,15 @@
                 xmlns:jsf="http://xmlns.jcp.org/jsf"
                 template="/template.xhtml">
     <ui:define name="content">
+        <f:event listener="#{conversationController.init}" type="preRenderView"></f:event>
+
         <h:form>
-            <ul class="nav nav-stacked">
-                <li class="active"><a jsf:action="/conversationscoped/formulario?faces-redirect=true">Conversation Scoped</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-            </ul>
+            <h:outputText value="Hola desde conversation"/>
+
+            <p:inputText value="#{conversationController.valor}"/>
+
+            <p:commandButton value="Siguiente"
+                             action="/conversationscoped/detalle?faces-redirect=true"/>
         </h:form>
     </ui:define>
 </ui:composition>
