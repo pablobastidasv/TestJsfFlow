@@ -1,29 +1,7 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Este proyecto tiene como objetivo guardar diversas pruebas de ejemplos de traspaso de parametros entre vistas 
+utilizando los diferentes scopes de JSF.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Este proyecto esta hecho y probado sobre wildfly8. Al ser JEE estandar no deberia presentar problemas con diferentes 
+servidores de aplicaciones que soporte JEE 7
