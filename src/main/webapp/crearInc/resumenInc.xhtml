@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/template.xhtml">
+    <ui:define name="content">
+        <h1>Resumen de la incidencia Creada</h1>
+
+        <h:form >
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <p:outputLabel value="Numero de incidencia"/>
+                </div>
+
+                <div class="input-group col-lg-2">
+                    #{crearIncidenciaController.incidencia.id}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <p:outputLabel value="Afiliado"/>
+                </div>
+
+                <div class="input-group col-lg-2">
+                    #{crearIncidenciaController.incidencia.afiliado.nombreCompleto}
+                </div>
+            </div>
+
+            <div class="row">
+                <p:outputLabel value="Ubicacion" styleClass="col-lg-2"/>
+                #{crearIncidenciaController.incidencia.ubicacion}
+            </div>
+            <div class="row">
+                <p:outputLabel value="Resumen" styleClass="col-lg-2"/>
+                #{crearIncidenciaController.incidencia.resumen}
+            </div>
+
+            <p:commandButton value="Finalizar"
+                             action="crearInc-exit"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

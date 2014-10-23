@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                template="/template.xhtml">
+    <ui:define name="content">
+        <h1>Crear incidencia</h1>
+
+        <h:form id="form">
+            <p:growl autoUpdate="true"/>
+            <p:focus for="txtAfiliado"/>
+
+            <div class="row">
+                <div class="col-lg-2">
+                    <p:outputLabel for="txtAfiliado"
+                                   value="Afiliado"/>
+                </div>
+
+                <div class="input-group col-lg-2">
+                    <p:inputText id="txtAfiliado"
+                                 disabled="#{not empty crearIncidenciaController.incidencia.afiliado.id}"
+                                 styleClass="form-control"
+                                 required="true"
+                                 value="#{crearIncidenciaController.incidencia.afiliado.numeroDocumento}"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default"
+                                type="button"
+                                jsf:id="btnBuscarAfiliado"
+                                jsf:action="#{crearIncidenciaController.buscarAfiliado}">
+                            <f:ajax render="txtAfiliado"
+                                    execute="btnBuscarAfiliado txtAfiliado"/>
+                            Go!
+                        </button>
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <p:outputLabel for="txtUbicacion"
+                               value="Ubicacion" styleClass="col-lg-2"/>
+                <p:inputText id="txtUbicacion"
+                             required="true"
+                             value="#{crearIncidenciaController.incidencia.ubicacion}"
+                             styleClass="col-lg-4"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtResumen"
+                               value="Resumen" styleClass="col-lg-2"/>
+                <p:inputText id="txtResumen"
+                             required="true"
+                             value="#{crearIncidenciaController.incidencia.resumen}"
+                             styleClass="col-lg-10"/>
+            </div>
+            <div class="row">
+                <p:outputLabel for="txtDescripcion"
+                               value="Ubicacion" styleClass="col-lg-2"/>
+                <p:inputTextarea id="txtDescripcion"
+                                 required="true"
+                                 value="#{crearIncidenciaController.incidencia.descripcion}"
+                                 styleClass="col-lg-10"/>
+            </div>
+
+            <p:commandButton value="Crear"
+                             action="#{crearIncidenciaController.crearIncidencia}"/>
+            <p:commandButton value="Salir"
+                             immediate="true"
+                             action="crearInc-exit"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

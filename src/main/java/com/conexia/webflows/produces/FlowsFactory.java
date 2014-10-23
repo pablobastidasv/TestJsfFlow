@@ -1,4 +1,4 @@
-package com.conexia.webflows.facesflows;
+package com.conexia.webflows.produces;
 
 import javax.enterprise.inject.Produces;
 import javax.faces.flow.Flow;
@@ -19,13 +19,15 @@ public class FlowsFactory implements Serializable {
         flowBuilder.id("", flowId); // set del id del flujo
 
         // Se crea el nodo inicial del flujo
-        flowBuilder.viewNode(flowId, "/flowscoped/" + flowId + "/" + flowId + ".xhtml").markAsStartNode();
+        flowBuilder.viewNode(flowId, "/" + flowId + "/" + flowId + ".xhtml").markAsStartNode();
 
         // Se crea el nodo que muestra el resumen del incidente creado
-        flowBuilder.viewNode(flowId+"-resumen", "/flowscoped/" + flowId + "/resumenInc.xhtml");
+        flowBuilder.viewNode(flowId+"-resumen", "/" + flowId + "/resumenInc.xhtml");
 
         // Se crea nodo de salida
-        flowBuilder.returnNode(flowId+"-exit").fromOutcome("home");
+        flowBuilder.returnNode(flowId+"-exit").fromOutcome("/index");
+
+        flowBuilder.initializer("#{crearIncidenciaController.init}");
 
         return flowBuilder.getFlow();
     }
