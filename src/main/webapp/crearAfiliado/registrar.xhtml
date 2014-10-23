@@ -98,8 +98,12 @@
                                  update="@form"/>
                 <p:commandButton value="Volver"
                                  immediate="true"
-                                 action="/index?faces-redirect=true"
-                                 update="@form"/>
+                                 rendered="#{flowScope.origin != 'crearInc'}"
+                                 action="crearAfiliado-exit"/>
+                <p:commandButton value="Continuar incidencia"
+                                 immediate="true"
+                                 rendered="#{flowScope.origin eq 'crearInc'}"
+                                 action="crearAfiliado-exitTo-crearInc"/>
             </div>
         </h:form>
     </ui:define>

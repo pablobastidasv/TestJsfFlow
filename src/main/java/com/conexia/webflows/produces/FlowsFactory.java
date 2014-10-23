@@ -27,7 +27,39 @@ public class FlowsFactory implements Serializable {
         // Se crea nodo de salida
         flowBuilder.returnNode(flowId+"-exit").fromOutcome("/index");
 
+        // Inicializador para el flujo de crear Incidencia
         flowBuilder.initializer("#{crearIncidenciaController.init}");
+
+        // Nodo para el envio del flujo hacia crear afiliado
+        flowBuilder.flowCallNode("call-crearAfiliado")
+                .flowReference("", "crearAfiliado")
+                .outboundParameter("afiliado", "#{crearIncidenciaController.incidencia.afiliado}")
+                .outboundParameter("origin", flowId);
+
+        return flowBuilder.getFlow();
+    }
+
+    @Produces
+    @FlowDefinition
+    public Flow defineFlowCrearAfiliado(@FlowBuilderParameter FlowBuilder flowBuilder) {
+        String flowId = "crearAfiliado"; // id del flujo
+        flowBuilder.id("", flowId); // set del id del flujo
+
+        // Seteo el valor del origen sobre un atributo propio del flujo
+        flowBuilder.inboundParameter("origin", "#{flowScope.origin}");
+        flowBuilder.inboundParameter("afiliado", "#{registrarController.afiliado}");
+
+        // Se crea el nodo inicial del flujo
+        flowBuilder.viewNode(flowId, "/" + flowId + "/registrar.xhtml").markAsStartNode();
+
+        // Se crea nodo de salida
+        flowBuilder.returnNode(flowId+"-exit").fromOutcome("/index");
+
+        // Nodo de salida hacia crear Incidente
+        flowBuilder.returnNode(flowId+"-exitTo-crearInc").fromOutcome("crearInc");
+
+        // Inicializador del flujo de registrar Afiliado
+        flowBuilder.initializer("#{registrarController.init}");
 
         return flowBuilder.getFlow();
     }

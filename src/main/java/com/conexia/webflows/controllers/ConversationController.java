@@ -1,14 +1,16 @@
 package com.conexia.webflows.controllers;
 
+import com.conexia.webflows.Log;
 import com.conexia.webflows.boundary.AfiliadoBoundary;
 import com.conexia.webflows.entities.Afiliado;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -31,6 +33,8 @@ public class ConversationController implements Serializable {
     private List<Afiliado> afiliados;
     @Getter @Setter
     private Afiliado afiliado;
+    @Inject
+    private Log logger;
 
     public ConversationController() {
     }
@@ -51,5 +55,13 @@ public class ConversationController implements Serializable {
         }
 
         return "/index?faces-redirect=true";
+    }
+    @PostConstruct
+    public void postConstruct(){
+        logger.info("PostConstruct de FacesScoped Bean");
+    }
+    @PreDestroy
+    public void preDestroy(){
+        logger.info("PreDestroy de FacesScoped Bean");
     }
 }

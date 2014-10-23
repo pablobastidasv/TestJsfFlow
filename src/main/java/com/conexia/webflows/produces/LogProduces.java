@@ -15,7 +15,7 @@ public class LogProduces {
     @Produces
     public Log getLogger(InjectionPoint injectionPoint){
 
-        final Logger logger = LoggerFactory.getLogger(injectionPoint.getMember().getClass());
+        final Logger logger = LoggerFactory.getLogger(injectionPoint.getMember().getDeclaringClass());
 
         return new Log() {
             @Override

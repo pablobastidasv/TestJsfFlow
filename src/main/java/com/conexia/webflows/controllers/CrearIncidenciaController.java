@@ -7,6 +7,7 @@ import com.conexia.webflows.entities.Afiliado;
 import com.conexia.webflows.entities.Incidencia;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.context.RequestContext;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -39,9 +40,7 @@ public class CrearIncidenciaController {
         Afiliado afiliado = afiliadoBoundary.buscarPorNumDoc(incidencia.getAfiliado().getNumeroDocumento());
 
         if(afiliado == null){
-            final FacesMessage msg = new FacesMessage("No se encontro el afiliado");
-            msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-            FacesContext.getCurrentInstance().addMessage("txtAfiliado", msg);
+            RequestContext.getCurrentInstance().execute("$('#modalCrearAfiliado').modal()");
         }else {
             final FacesMessage msg = new FacesMessage(afiliado.getNombreCompleto());
             msg.setSeverity(FacesMessage.SEVERITY_INFO);
