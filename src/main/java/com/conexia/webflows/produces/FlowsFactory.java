@@ -19,7 +19,7 @@ public class FlowsFactory implements Serializable {
         flowBuilder.id("", flowId); // set del id del flujo
 
         // Se crea el nodo inicial del flujo
-        flowBuilder.viewNode(flowId, "/" + flowId + "/" + flowId + ".xhtml").markAsStartNode();
+        flowBuilder.viewNode(flowId, "/" + flowId + "/" + flowId + "Home.xhtml").markAsStartNode();
 
         // Se crea el nodo que muestra el resumen del incidente creado
         flowBuilder.viewNode(flowId+"-resumen", "/" + flowId + "/resumenInc.xhtml");
